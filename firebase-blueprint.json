@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A gallery project.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "thumbnail": { "type": "string" },
+        "images": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "number", "description": "Creation timestamp" },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["title", "category", "thumbnail", "images", "createdAt", "ownerId"]
+    }
+  },
+  "firestore": {
+    "projects": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Public gallery projects."
+    },
+    "admins": {
+      "description": "List of authorized admins.",
+      "schema": {
+        "title": "Admin",
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" }
+        }
+      }
+    }
+  }
+}
